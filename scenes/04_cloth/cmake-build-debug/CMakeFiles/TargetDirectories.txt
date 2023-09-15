@@ -1,0 +1,3 @@
+/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/CMakeFiles/04_cloth.dir

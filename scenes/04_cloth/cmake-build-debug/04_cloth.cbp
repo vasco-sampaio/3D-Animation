@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="04_cloth"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\cgp\;CMake Files\..\..\cgp\library\;CMake Files\..\..\cgp\library\third_party\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\run\;CMake Files\..\..\..\..\..\run\current-system\;CMake Files\..\..\..\..\..\run\current-system\sw\;CMake Files\..\..\..\..\..\run\current-system\sw\lib\;CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\;CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\glfw3\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="04_cloth">
+				<Option output="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/04_cloth" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/theo.crepin/3D-Animation/scenes/04_cloth/src"/>
+					<Add directory="/home/theo.crepin/3D-Animation/cgp/library"/>
+					<Add directory="/nix/store/sw6dywwgvalklwajvzjpgh2wwdn90cvj-glfw-3.3.8/include"/>
+					<Add directory="/run/current-system/sw/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-unknown-linux-gnu"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/include-fixed"/>
+					<Add directory="/nix/store/hkj250rjsvxcbr31fr1v81cv88cdfp4l-glibc-2.37-8-dev/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 04_cloth"/>
+					<CompileFile command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="04_cloth/fast">
+				<Option output="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/04_cloth" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/theo.crepin/3D-Animation/scenes/04_cloth/src"/>
+					<Add directory="/home/theo.crepin/3D-Animation/cgp/library"/>
+					<Add directory="/nix/store/sw6dywwgvalklwajvzjpgh2wwdn90cvj-glfw-3.3.8/include"/>
+					<Add directory="/run/current-system/sw/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-unknown-linux-gnu"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/include"/>
+					<Add directory="/nix/store/b7hvml0m3qmqraz1022fwvyyg6fc1vdy-gcc-12.2.0/lib/gcc/x86_64-unknown-linux-gnu/12.2.0/include-fixed"/>
+					<Add directory="/nix/store/hkj250rjsvxcbr31fr1v81cv88cdfp4l-glibc-2.37-8-dev/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 04_cloth/fast"/>
+					<CompileFile command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/run/current-system/sw/bin/make -j16 -f &quot;/home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/cgp.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/cgp_parameters.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/array.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray/numarray.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray/test/test_numarray.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray/test/test_numarray.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/implementation/numarray_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/implementation/numarray_stack2.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/implementation/numarray_stack3.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/implementation/numarray_stack4.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/numarray_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/numarray_stack_fwd.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/special_types/special_types.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/special_types/special_types.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/test/test_numarray_stack.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/array/numarray_stack/test/test_numarray_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/base.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/basic_types/basic_types.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/basic_types/basic_types.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/error/error.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/error/error.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/rand/rand.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/rand/rand.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/stl/stl.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/string/string.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/string/string.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/base/types/types.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/containers.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid/grid.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid/grid_2D/grid_2D.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid/grid_3D/grid_3D.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid/test/test_grid.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid/test/test_grid.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid_stack/grid_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid_stack/grid_stack_2D/grid_stack_2D.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid_stack/grid_stack_2D/test/test_grid_stack_2D.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/grid_stack/grid_stack_2D/test/test_grid_stack_2D.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/image/image.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/image/image.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/matrix_stack/matrix_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/matrix_stack/matrix_stack_fwd.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/matrix_stack/special_types/definition/special_types.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/matrix_stack/special_types/definition/special_types.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/matrix_stack/special_types/special_types.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/offset_grid/offset_grid.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/containers/offset_grid/offset_grid.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/core.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/files/files.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/files/files.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/path/path.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/core/path/path.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/geometry.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/interpolation/interpolation.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/interpolation/interpolation.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/functions/mat_functions.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/functions/mat_functions.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/functions/test/test_vec_mat.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/functions/test/test_vec_mat.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat2/mat2.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat2/mat2.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat3/mat3.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat3/mat3.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat4/mat4.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/mat4/mat4.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/test/test_matrix_stack.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/mat/test/test_matrix_stack.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/quaternion/quaternion.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/quaternion/quaternion.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/curve/curve.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/curve/curve.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/implicit/implicit.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/implicit/marching_cube/helper/marching_cubes_lut.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/implicit/marching_cube/helper/marching_cubes_lut.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/implicit/marching_cube/marching_cube.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/implicit/marching_cube/marching_cube.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/intersection/intersection.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/intersection/intersection.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/loader/loader.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/loader/obj/obj.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/loader/obj/obj.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/loader/obj_advanced/obj_advanced.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/loader/obj_advanced/obj_advanced.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/mesh.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/primitive/mesh_primitive.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/primitive/mesh_primitive.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/structure/mesh.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/mesh/structure/mesh.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/noise/noise.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/noise/noise.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/shape.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/spatial_domain/spatial_domain.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/spatial_domain/spatial_domain_grid_3D/spatial_domain_grid_3D.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/shape/spatial_domain/spatial_domain_grid_3D/spatial_domain_grid_3D.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine/affine.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine/affine.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine_rt/affine_rt.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine_rt/affine_rt.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine_rts/affine_rts.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/affine/affine_rts/affine_rts.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/frame/frame.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/frame/frame.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/projection/projection.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/projection/projection.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/rotation_transform/rotation_transform.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/rotation_transform/rotation_transform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/rotation_transform/test/test_rotation.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/rotation_transform/test/test_rotation.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/transform/transform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/vec/vec.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/vec/vec2/vec2.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/vec/vec3/vec3.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/geometry/vec/vec4/vec4.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_2d_displacement/camera_controller_2d_displacement.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_2d_displacement/camera_controller_2d_displacement.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_first_person/camera_controller_first_person.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_first_person/camera_controller_first_person.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_first_person_euler/camera_controller_first_person_euler.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_first_person_euler/camera_controller_first_person_euler.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_fly_mode/camera_controller_fly_mode.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_fly_mode/camera_controller_fly_mode.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_generic_base/camera_controller_generic_base.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_generic_base/camera_controller_generic_base.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_orbit/camera_controller_orbit.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_orbit/camera_controller_orbit.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_orbit_euler/camera_controller_orbit_euler.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/camera_controller_orbit_euler/camera_controller_orbit_euler.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/test/test_camera_controller.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_controller/test/test_camera_controller.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_first_person/camera_first_person.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_first_person/camera_first_person.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_first_person_euler/camera_first_person_euler.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_first_person_euler/camera_first_person_euler.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_generic_base/camera_generic_base.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_generic_base/camera_generic_base.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_model.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_orbit/camera_orbit.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_orbit/camera_orbit.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_orbit_euler/camera_orbit_euler.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/camera_orbit_euler/camera_orbit_euler.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/common_functions/common_functions.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_model/common_functions/common_functions.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_projection/camera_projection.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/camera/camera_projection/camera_projection.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/curve_drawable/curve_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/curve_drawable/curve_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/curve_drawable_dynamic_extend/curve_drawable_dynamic_extend.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/curve_drawable_dynamic_extend/curve_drawable_dynamic_extend.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/environment/environment.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/environment/environment.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/hierarchy_mesh_drawable/hierarchy_mesh_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/hierarchy_mesh_drawable/hierarchy_mesh_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/material/material.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/material/material_mesh_drawable_phong/material_mesh_drawable_phong.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/material/material_mesh_drawable_phong/material_mesh_drawable_phong.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/mesh_drawable/mesh_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/mesh_drawable/mesh_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/special_drawable/skybox_drawable/skybox_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/special_drawable/skybox_drawable/skybox_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/special_drawable/special_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/special_drawable/trajectory_drawable/trajectory_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/special_drawable/trajectory_drawable/trajectory_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/triangles_drawable/triangles_drawable.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/drawable/triangles_drawable/triangles_drawable.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/emscripten/emscripten.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/emscripten/emscripten.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/graphics.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/imgui/imgui.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/imgui/imgui.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/input_devices/input_devices.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/input_devices/input_devices.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/buffer.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/ebo/ebo.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/ebo/ebo.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/opengl_buffer/opengl_buffer.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/opengl_buffer/opengl_buffer.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/vbo/vbo.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/buffer/vbo/vbo.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/debug/debug.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/debug/debug.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/fbo/fbo.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/fbo/fbo.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/opengl.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/shaders/cache_uniform_location/cache_uniform_location.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/shaders/cache_uniform_location/cache_uniform_location.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/shaders/shaders.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/shaders/shaders.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/texture/texture.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/texture/texture.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/uniform/uniform.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/opengl/uniform/uniform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_plane/picking_plane.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_plane/picking_plane.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_spheres/picking_spheres.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_spheres/picking_spheres.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_structure/picking_structure.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/picking/picking_structure/picking_structure.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/time.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_basic/timer_basic.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_basic/timer_basic.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_event_periodic/timer_event_periodic.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_event_periodic/timer_event_periodic.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_fps/timer_fps.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_fps/timer_fps.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_interval/timer_interval.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/timer/timer_interval/timer_interval.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/tracker/tracker.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/tracker/velocity_tracker/velocity_tracker.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/time/tracker/velocity_tracker/velocity_tracker.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/window/window.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/graphics/window/window.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/cgp/opengl_include.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl33/glad.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl33/glad.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl33/khrplatform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl41/glad.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl41/glad.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl41/khrplatform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl43/glad.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl43/glad.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl43/khrplatform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl46/glad.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl46/glad.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/glad/opengl46/khrplatform.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imconfig.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_demo.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_draw.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_impl_glfw.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_impl_glfw.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_impl_opengl3.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_impl_opengl3.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_internal.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imgui_widgets.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imstb_rectpack.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imstb_textedit.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/imgui/imstb_truetype.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/jpeg/jpgd.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/jpeg/jpgd.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/jpeg/jpge.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/jpeg/jpge.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/lodepng/lodepng.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/lodepng/lodepng.h">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/simplexnoise/simplexnoise1234.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/simplexnoise/simplexnoise1234.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/cgp/library/third_party/src/tinyobj/tiny_obj_loader.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/mesh/frag.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/mesh/mesh.frag.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/mesh/mesh.vert.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/mesh/vert.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/single_color/frag.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/single_color/single_color.frag.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/single_color/single_color.vert.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/shaders/single_color/vert.glsl">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/cloth/cloth.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/cloth/cloth.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/constraint/constraint.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/constraint/constraint.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/environment.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/environment.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/main.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/scene.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/scene.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/simulation/simulation.cpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/src/simulation/simulation.hpp">
+			<Option target="04_cloth"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../cgp/library/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\cgp\library\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../cgp/library/third_party/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\cgp\library\third_party\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../../../../run/current-system/sw/lib/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../../../../run/current-system/sw/lib/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../../../../run/current-system/sw/lib/cmake/glfw3/glfw3Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/home/theo.crepin/3D-Animation/scenes/04_cloth/../../../../../run/current-system/sw/lib/cmake/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\run\current-system\sw\lib\cmake\glfw3\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
