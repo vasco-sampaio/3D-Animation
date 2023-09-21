@@ -31,19 +31,25 @@ void scene_structure::initialize_sph()
 	float const c = 0.7f;
 	float const h = sph_parameters.h;
 
+	grid.resize(ceil(1/h), ceil(1/h), ceil(1/h));
+
 
 	// Fill a square with particles
 	particles.clear();
 	for (float x = h; x < 1.0f - h; x = x + c * h)
 	{
-		for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
+		for (float y = h; y < 1.0f - h; y = y + c * h)
 		{
-			particle_element particle;
-			particle.p = { x + h / 8.0 * rand_interval(),y + h / 8.0 * rand_interval(),0 }; // a zero value in z position will lead to a 2D simulation
-			particles.push_back(particle);
+		    for (float z = h; z < 1.0f - h; z = z + c * h * 2)
+		    {
+                particle_element particle;
+                particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
+                              z + h / 8.0 * rand_interval()};
+                particles.push_back(particle);
+                grid((x/h) - 1, (y/h) - 1, (z/h) - 1).fill();
+            }
 		}
 	}
-
 }
 
 void scene_structure::display_frame()
@@ -115,11 +121,8 @@ void update_field_color(grid_2D<vec3>& field, numarray<particle_element> const& 
 
 void scene_structure::mouse_move_event()
 {
-	// Do not mode the camera
-	/* 
 	if (!inputs.keyboard.shift)
 		camera_control.action_mouse_move(environment.camera_view);
-		*/
 }
 void scene_structure::mouse_click_event()
 {

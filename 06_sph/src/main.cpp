@@ -262,6 +262,3 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int action, in
 	}
 
 }
-
-
-
