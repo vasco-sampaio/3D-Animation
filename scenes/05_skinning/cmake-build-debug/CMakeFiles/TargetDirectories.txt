@@ -1,3 +1,0 @@
-/home/theo.crepin/3D-Animation/scenes/05_skinning/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/theo.crepin/3D-Animation/scenes/05_skinning/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/theo.crepin/3D-Animation/scenes/05_skinning/cmake-build-debug/CMakeFiles/05_skinning.dir

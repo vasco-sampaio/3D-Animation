@@ -42,7 +42,7 @@ struct scene_structure : cgp::scene_inputs_generic {
 
 	cgp::grid_2D<cgp::vec3> field;      // grid used to represent the volume of the fluid under the particles
 	cgp::mesh_drawable field_quad; // quad used to display this field color
-	cgp::grid_3D<numarray<int>> grid;
+	cgp::grid_3D<std::vector<int>> grid;
 
 	// ****************************** //
 	// Functions

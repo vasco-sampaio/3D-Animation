@@ -1,8 +1,0 @@
-/nix/store/k7rv2rdhp9zv7i3rm323zhh113i5c591-clion-2021.2/clion-2021.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/theo.crepin/3D-Animation/scenes/04_cloth
--- The relative path to the library is set to ../../cgp/library
--- The absolute path to the library is set to /home/theo.crepin/3D-Animation/cgp/library
--- Configure steps to build executable file [04_cloth]
--- Include CGP lib and external dependencies files from relative path
--- Configuring done
--- Generating done
--- Build files have been written to: /home/theo.crepin/3D-Animation/scenes/04_cloth/cmake-build-debug

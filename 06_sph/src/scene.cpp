@@ -30,22 +30,23 @@ void scene_structure::initialize_sph()
     float const c = sph_parameters.c;
 	float const h = sph_parameters.h;
 
-	grid.resize(ceil(1/h), ceil(1/h), ceil(1/h));
+	grid.resize(ceil(2 / h), ceil(2 / h), ceil(2 / h));
 
 	// Fill a square with particles
 	particles.clear();
 	int i = 0;
 	for (float x = h; x < 1.0f - h; x = x + c * h)
 	{
-		for (float y = h; y < 1.0f - h; y = y + c * h)
+		for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
 		{
-		    for (float z = h; z < 1.0f - h; z = z + c * h)
+		    for (float z = -1.0f + h; z < 1.0f - h; z = z + c * h)
 		    {
                 particle_element particle;
                 particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
                               z + h / 8.0 * rand_interval()};
                 particles.push_back(particle);
-                grid.data[grid.index_to_offset(((particle.p.x + 1)/h), ((particle.p.y + 1)/h), ((particle.p.z + 1)/h))].push_back(i);
+                particle.cell = grid.index_to_offset(floor((particle.p.x + 1)/h), floor((particle.p.y + 1)/h), floor((particle.p.z + 1)/h));
+                grid.data[particle.cell].push_back(i);
                 ++i;
 		    }
 		}

@@ -14,7 +14,9 @@ struct particle_element
     float rho;      // density at this particle position
     float pressure; // pressure at this particle position
 
-    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0) {}
+    int cell; // cell index in the grid
+
+    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), cell(0) {}
 };
 
 // SPH simulation parameters
@@ -42,4 +44,4 @@ struct sph_parameters_structure
 
 
 void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters,
-              cgp::grid_3D<cgp::numarray<int>> grid);
+              cgp::grid_3D<std::vector<int>>& grid);
