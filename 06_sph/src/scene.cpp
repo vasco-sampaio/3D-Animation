@@ -27,29 +27,30 @@ void scene_structure::initialize()
 
 void scene_structure::initialize_sph()
 {
-	// Initial particle spacing (relative to h)
-	float const c = 0.7f;
+    float const c = sph_parameters.c;
 	float const h = sph_parameters.h;
 
 	grid.resize(ceil(1/h), ceil(1/h), ceil(1/h));
 
-
 	// Fill a square with particles
 	particles.clear();
+	int i = 0;
 	for (float x = h; x < 1.0f - h; x = x + c * h)
 	{
 		for (float y = h; y < 1.0f - h; y = y + c * h)
 		{
-		    for (float z = h; z < 1.0f - h; z = z + c * h * 2)
+		    for (float z = h; z < 1.0f - h; z = z + c * h)
 		    {
                 particle_element particle;
                 particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
                               z + h / 8.0 * rand_interval()};
                 particles.push_back(particle);
-                grid((x/h) - 1, (y/h) - 1, (z/h) - 1).fill();
-            }
+                grid.data[grid.index_to_offset(((particle.p.x + 1)/h), ((particle.p.y + 1)/h), ((particle.p.z + 1)/h))].push_back(i);
+                ++i;
+		    }
 		}
 	}
+	std::cout << "particles count: " << particles.size() << "\n";
 }
 
 void scene_structure::display_frame()
@@ -59,8 +60,7 @@ void scene_structure::display_frame()
 	
 	timer.update(); // update the timer to the current elapsed time
 	float const dt = 0.005f * timer.scale;
-	simulate(dt, particles, sph_parameters);
-
+	simulate(dt, particles, sph_parameters, grid);
 
 	if (gui.display_particles) {
 		for (int k = 0; k < particles.size(); ++k) {

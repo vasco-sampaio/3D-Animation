@@ -20,6 +20,9 @@ struct particle_element
 // SPH simulation parameters
 struct sph_parameters_structure
 {
+    // Initial particle spacing (relative to h)
+    float const c = 0.7f;
+
     // Influence distance of a particle (size of the kernel)
     float h = 0.12f;
 
@@ -38,4 +41,5 @@ struct sph_parameters_structure
 };
 
 
-void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters);
+void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters,
+              cgp::grid_3D<cgp::numarray<int>> grid);

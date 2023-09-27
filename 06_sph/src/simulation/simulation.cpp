@@ -29,15 +29,46 @@ float W_density(vec3 const& p_i, const vec3& p_j, float h)
 	return 315.0/(64.0*3.14159f*std::pow(h,9)) * std::pow(h*h-r*r, 3.0f);
 }
 
+std::vector<int> get_neighbors(vec3 pos, cgp::grid_3D<numarray<int>> grid, float h, int val)
+{
+    std::vector<int> neighbors_indexes;
 
-void update_density(numarray<particle_element>& particles, float h, float m)
+    for (int i = -1; i <= 1; ++i)
+    {
+        for (int j = -1; j <= 1; ++j)
+        {
+            for (int k = -1; k <= 1; ++k)
+            {
+                if (i + int(pos.x/h) >= 0 && i + int(pos.x/h) <= grid.dimension.x - 1 &&
+                j + int(pos.y/h) >= 0 && j + int(pos.y/h) <= grid.dimension.y - 1 &&
+                k + int(pos.z/h) >= 0 && k + int(pos.z/h) <= grid.dimension.z - 1)
+                {
+                    numarray<int> grid_cell = grid.data[grid.index_to_offset(i + int(pos.x/h), j + int(pos.y/h),
+                                                        k + int(pos.z/h))];
+                    for (int & o : grid_cell)
+                    {
+                        if (o != val)
+                            neighbors_indexes.push_back(o);
+                    }
+
+                }
+            }
+        }
+    }
+
+    return neighbors_indexes;
+}
+
+void update_density(numarray<particle_element>& particles, float h, float m, cgp::grid_3D<numarray<int>> grid)
 {
     //  Compute the density value (particles[i].rho) at each particle position
     //  rho_i = \sum_j m W_density(pi,pj)
     int const N = particles.size();
     for(int i=0; i<N; ++i) {
         particles[i].rho = 0;
-        for(int j=0; j<N; ++j) {
+        std::vector<int> neighbors_indexes = get_neighbors(particles[i].p, grid, h, i);
+        for (int j : neighbors_indexes)
+        {
             if (norm(particles[i].p - particles[j].p) <= h)
                 particles[i].rho += m * W_density(particles[i].p, particles[j].p, h);
         }
@@ -53,7 +84,7 @@ void update_pressure(numarray<particle_element>& particles, float rho0, float st
 }
 
 // Compute the forces and update the acceleration of the particles
-void update_force(numarray<particle_element>& particles, float h, float m, float nu)
+void update_force(numarray<particle_element>& particles, float h, float m, float nu, cgp::grid_3D<numarray<int>> grid)
 {
 	// gravity
     const int N = particles.size();
@@ -71,9 +102,12 @@ void update_force(numarray<particle_element>& particles, float h, float m, float
     {
         vec3 sum_press = {0,0,0};
         vec3 sum_visc = {0,0,0};
-        for (int j = 0; j < N; ++j)
+
+        particle_element particle = particles[i];
+        std::vector<int> neighbors_indexes = get_neighbors(particle.p, grid, h, i);
+        for (int j : neighbors_indexes)
         {
-            if (i != j && norm(particles[i].p - particles[j].p) <= h)
+            if (norm(particles[i].p - particles[j].p) <= h)
             {
                 sum_press += m * ((particles[i].pressure + particles[j].pressure) / (2 * particles[j].rho)) *
                              W_gradient_pressure(particles[i].p, particles[j].p, h);
@@ -88,13 +122,15 @@ void update_force(numarray<particle_element>& particles, float h, float m, float
     }
 }
 
-void simulate(float dt, numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters)
+void simulate(float dt, numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters, cgp::grid_3D<numarray<int>> grid)
 {
 
 	// Update values
-    update_density(particles, sph_parameters.h, sph_parameters.m);                   // First compute updated density
+	float h = sph_parameters.h;
+	float c = sph_parameters.c;
+	update_density(particles, h, sph_parameters.m, grid);                   // First compute updated density
     update_pressure(particles, sph_parameters.rho0, sph_parameters.stiffness);       // Compute associated pressure
-    update_force(particles, sph_parameters.h, sph_parameters.m, sph_parameters.nu);  // Update forces
+    update_force(particles, h, sph_parameters.m, sph_parameters.nu, grid);  // Update forces
 
 	// Numerical integration
 	float const damping = 0.005f;
@@ -111,12 +147,17 @@ void simulate(float dt, numarray<particle_element>& particles, sph_parameters_st
 	}
 
 
-	// Collision
+	for (auto& vec : grid.data)
+	    vec.clear();
+
+	// Collision and update grid
     float const epsilon = 1e-3f;
     for(int k=0; k<N; ++k)
     {
-        vec3& p = particles[k].p;
-        vec3& v = particles[k].v;
+        particle_element particle = particles[k];
+
+        vec3& p = particle.p;
+        vec3& v = particle.v;
 
         // small perturbation to avoid alignment
         if( p.y<-1 ) {p.y = -1+epsilon*rand_interval();  v.y *= -0.5f;}
@@ -125,6 +166,7 @@ void simulate(float dt, numarray<particle_element>& particles, sph_parameters_st
         if( p.y>1 ) {p.y = 1-epsilon*rand_interval();  v.y *= -0.5f;}
         if( p.z<-1 ) {p.z = -1+epsilon*rand_interval();  v.z *= -0.5f;}
         if( p.z>1 )  {p.z =  1-epsilon*rand_interval();  v.z *= -0.5f;}
-    }
 
+        grid.data[grid.index_to_offset(((particle.p.x + 1)/h), ((particle.p.y + 1)/h), ((particle.p.z + 1)/h))].push_back(k);
+    }
 }
