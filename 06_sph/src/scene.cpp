@@ -13,10 +13,19 @@ void scene_structure::initialize()
 	camera_control.look_at({ 0.0f, 0.0f, 2.0f }, {0,0,0}, {0,1,0});
 	global_frame.initialize_data_on_gpu(mesh_primitive_frame());
 
+
 	field.resize(30, 30);
 	field_quad.initialize_data_on_gpu(mesh_primitive_quadrangle({ -1,-1,0 }, { 1,-1,0 }, { 1,1,0 }, { -1,1,0 }) );
 	field_quad.material.phong = { 1,0,0 };
 	field_quad.texture.initialize_texture_2d_on_gpu(field);
+
+
+    grid.resize(ceil(2.0f / sph_parameters.h), ceil(2.0f / sph_parameters.h), ceil(2.0f / sph_parameters.h));
+    grid.data.resize(grid.size());
+    for (int i = 0; i < grid.size(); ++i) {
+        grid.data[i] = std::vector<int>{};
+        grid.data[i].reserve(200); // arbitrary value
+    }
 
 	initialize_sph();
 	sphere_particle.initialize_data_on_gpu(mesh_primitive_sphere(1.0,{0,0,0},10,10));
@@ -30,11 +39,13 @@ void scene_structure::initialize_sph()
     float const c = sph_parameters.c;
 	float const h = sph_parameters.h;
 
-	grid.resize(ceil(2 / h), ceil(2 / h), ceil(2 / h));
-
 	// Fill a square with particles
 	particles.clear();
-	int i = 0;
+    for (auto& cell : grid.data) {
+        cell.clear(); // Clear any existing content in the cells
+    }
+
+    int i = 0;
 	for (float x = h; x < 1.0f - h; x = x + c * h)
 	{
 		for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
@@ -51,7 +62,6 @@ void scene_structure::initialize_sph()
 		    }
 		}
 	}
-	std::cout << "particles count: " << particles.size() << "\n";
 }
 
 void scene_structure::display_frame()

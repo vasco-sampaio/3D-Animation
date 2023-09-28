@@ -33,15 +33,10 @@ float W_density(vec3 const& p_i, const vec3& p_j, float h)
 
 std::vector<int> get_neighbors(const numarray<particle_element>& particles, const cgp::grid_3D<std::vector<int>>& grid, float h, int idx)
 {
-
     // TO DO: Add neighbors property to particle_element to avoid calling it every time
     std::vector<int> neighbors_indexes;
     int cell = particles[idx].cell;
     int3 dimension = grid.dimension;
-
-    std::cout << "Grid dimension : " << dimension << std::endl;
-    std::cout << "Neighbours of cell " << cell << " : " << std::endl;
-
 
     for (int i = std::max(0, cell - 1); i <= std::min(dimension.x - 1, cell + 1); ++i)
     {
@@ -49,16 +44,13 @@ std::vector<int> get_neighbors(const numarray<particle_element>& particles, cons
         {
             for (int k = std::max(0, cell - 1); k <= std::min(dimension.z - 1, cell + 1); ++k)
             {
-                // PROBLEM: it never goes inside the for loop below
-                std::cout << "Cell " << i << " " << j << " " << k << std::endl;
-                std::cout << "Offset " << grid.index_to_offset(i, j, k) << std::endl;
-                for (int p : grid.data[grid.index_to_offset(i, j, k)])
+                for (auto& p : grid.data[grid.index_to_offset(i, j, k)])
                 {
                     if (norm(particles[idx].p - particles[p].p) <= h) {
-                        std::cout << "Particle " << p << std::endl;
                         neighbors_indexes.push_back(p);
                     }
                 }
+                // std::cout << "Neighbors size : " << neighbors_indexes.size() << std::endl;
             }
         }
     }
@@ -124,7 +116,7 @@ void update_force(numarray<particle_element>& particles, float h, float m, float
             }
         }
 
-        F_pressure = (-m / (particles[i].rho)) * sum_press;
+        F_pressure = static_cast<float>(-m / particles[i].rho) * sum_press;
         F_viscosity = m * nu * sum_visc;
         particles[i].f += F_pressure + F_viscosity;
 
@@ -133,7 +125,6 @@ void update_force(numarray<particle_element>& particles, float h, float m, float
 
 void simulate(float dt, numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters, cgp::grid_3D<std::vector<int>>& grid)
 {
-
 	// Update values
 	float h = sph_parameters.h;
 	update_density(particles, h, sph_parameters.m, grid);                   // First compute updated density
@@ -152,6 +143,8 @@ void simulate(float dt, numarray<particle_element>& particles, sph_parameters_st
 
 		v = (1-damping)*v + dt*f/m;
 		p = p + dt*v;
+        std::cout << "Particle position: " << p << std::endl;
+        
 	}
 
 	// Collision and update grid
@@ -173,7 +166,9 @@ void simulate(float dt, numarray<particle_element>& particles, sph_parameters_st
 
         // update grid
         grid.data[particle.cell].erase(std::find(grid.data[particle.cell].begin(), grid.data[particle.cell].end(), k), grid.data[particle.cell].end());
-        particle.cell = grid.index_to_offset((particle.p.x + 1)/h, (particle.p.y + 1)/h, (particle.p.z + 1)/h);
+        particle.cell = grid.index_to_offset(floor((particle.p.x + 1)/h), floor((particle.p.y + 1)/h), floor((particle.p.z + 1)/h));
+        std::cout << "Cell: " << particle.cell << std::endl;
+        std::cout << "Size of grid: " << grid.data.size() << std::endl;
         grid.data[particle.cell].push_back(k);
     }
 }
