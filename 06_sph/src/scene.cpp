@@ -55,13 +55,16 @@ void scene_structure::initialize_sph()
                 particle_element particle;
                 particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
                               z + h / 8.0 * rand_interval()};
-                particles.push_back(particle);
                 particle.cell = grid.index_to_offset(floor((particle.p.x + 1)/h), floor((particle.p.y + 1)/h), floor((particle.p.z + 1)/h));
+                particles.push_back(particle);
                 grid.data[particle.cell].push_back(i);
                 ++i;
 		    }
 		}
 	}
+    std::cout << "Number of particles: " << particles.size() << std::endl;
+    std::cout << "Number of cells: " << grid.size() << std::endl;
+    std::cout << "Size of grid: " << grid.data.size() << std::endl;
 }
 
 void scene_structure::display_frame()

@@ -26,7 +26,7 @@ struct sph_parameters_structure
     float const c = 0.7f;
 
     // Influence distance of a particle (size of the kernel)
-    float h = 0.12f;
+    float h = 0.20f;
 
     // Rest density (normalized to 1 - real unit should be 1000kg/m^2)
     float rho0 = 1;
@@ -35,7 +35,7 @@ struct sph_parameters_structure
     float m = rho0*h*h;
 
     // viscosity parameter
-    float nu = 0.02f;   
+    float nu = 0.02f;
      
     // Stiffness converting density to pressure
     float stiffness = 8.0f;
