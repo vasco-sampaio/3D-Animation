@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../octree/octree.hpp"
 #include "cgp/cgp.hpp"
 
 // SPH Particle
@@ -12,11 +13,11 @@ struct particle_element
     float rho;      // density at this particle position
     float pressure; // pressure at this particle position
 
-    uint morton; // cell index in the grid
-    std::vector<uint> neighbors; // list of neighbors
+    std::vector<int> neighbors; // neighbors of this particle
+    unsigned int morton; // Morton code of this particle
 
     particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), morton(0) {
-        neighbors.reserve(20);
+        neighbors.reserve(30);
     }
 };
 

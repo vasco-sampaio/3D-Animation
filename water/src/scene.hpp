@@ -5,6 +5,7 @@
 #include "environment.hpp"
 
 #include "simulation/simulation.hpp"
+#include "octree/octree.hpp"
 
 using cgp::mesh_drawable;
 
@@ -42,7 +43,8 @@ struct scene_structure : cgp::scene_inputs_generic {
 
 	cgp::grid_2D<cgp::vec3> field;      // grid used to represent the volume of the fluid under the particles
 	cgp::mesh_drawable field_quad; // quad used to display this field color
-	std::vector<uint> grid;
+	
+	Octree<std::set<int>> grid = Octree<std::set<int>>(5); // grid used to store the particles
 
 	// ****************************** //
 	// Functions

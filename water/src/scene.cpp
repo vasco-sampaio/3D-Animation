@@ -1,8 +1,6 @@
 #include <algorithm>
 
 #include "scene.hpp"
-#include "simulation/grid_handling.hpp"
-
 
 using namespace cgp;
 
@@ -16,14 +14,12 @@ void scene_structure::initialize()
 	camera_control.look_at({ 0.0f, 0.0f, 2.0f }, {0,0,0}, {0,1,0});
 	global_frame.initialize_data_on_gpu(mesh_primitive_frame());
 
-
 	field.resize(30, 30);
 	field_quad.initialize_data_on_gpu(mesh_primitive_quadrangle({ -1,-1,0 }, { 1,-1,0 }, { 1,1,0 }, { -1,1,0 }) );
 	field_quad.material.phong = { 1,0,0 };
 	field_quad.texture.initialize_texture_2d_on_gpu(field);
 
-	uint dim = ceil(2.0f / sph_parameters.h);
-    grid.reserve(dim * dim * dim);
+	// grid = Octree<std::set<int>>(5);
 
 	initialize_sph();
 	sphere_particle.initialize_data_on_gpu(mesh_primitive_sphere(1.0,{0,0,0},10,10));
@@ -40,26 +36,29 @@ void scene_structure::initialize_sph()
 	// Fill a square with particles
 	particles.clear();
 
-	for (float x = h; x < 1.0f - h; x = x + c * h)
-	{
-		for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
+	for (int k = 0; k < 2; ++k) {
+		for (float x = h; x < 1.0f - h; x = x + c * h)
 		{
-		    for (float z = -1.0f + h; z < 1.0f - h; z = z + c * h)
-		    {
-                particle_element particle;
-                particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
-                              z + h / 8.0 * rand_interval()};
-                particle.morton = morton_code(floor((particle.p.x + 1)/h), floor((particle.p.y + 1)/h), floor((particle.p.z + 1)/h));
-                particles.push_back(particle);
-                grid.push_back(particle.morton);
-		    }
+			for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
+			{
+				for (float z = -1.0f + h; z < 1.0f - h; z = z + c * h)
+				{
+					particle_element particle;
+					particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
+								z + h / 8.0 * rand_interval()};
+					particles.push_back(particle);
+				}
+			}
 		}
 	}
 
-	std::sort(grid.begin(), grid.end());
+	update_grid(particles, grid);
 
     std::cout << "Number of particles: " << particles.size() << std::endl;
 }
+
+
+float t = 0.0f;
 
 void scene_structure::display_frame()
 {
@@ -69,14 +68,14 @@ void scene_structure::display_frame()
 	timer.update(); // update the timer to the current elapsed time
 	float const dt = 0.005f * timer.scale;
 
-	float time = 0.0f;
-	// Update grid
-	if (timer.t - time > 0.5f) {
+	if (timer.t - t > 0.5f) {
 		update_grid(particles, grid);
-		time = timer.t;
+		t = timer.t;
 	}
-	
+
 	simulate(dt, particles, sph_parameters);
+	
+	
 
 	if (gui.display_particles) {
 		for (int k = 0; k < particles.size(); ++k) {
