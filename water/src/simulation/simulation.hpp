@@ -13,12 +13,9 @@ struct particle_element
     float rho;      // density at this particle position
     float pressure; // pressure at this particle position
 
-    std::vector<int> neighbors; // neighbors of this particle
     unsigned int morton; // Morton code of this particle
 
-    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), morton(0) {
-        neighbors.reserve(30);
-    }
+    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), morton(0) {}
 };
 
 // SPH simulation parameters
@@ -28,7 +25,7 @@ struct sph_parameters_structure
     float const c = 0.7f;
 
     // Influence distance of a particle (size of the kernel)
-    float h = 0.12f;
+    float h = 0.2f;
 
     // Rest density (normalized to 1 - real unit should be 1000kg/m^2)
     float rho0 = 1;
@@ -45,4 +42,5 @@ struct sph_parameters_structure
 };
 
 
-void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters);
+void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters,
+              const Octree<std::set<int>>& grid);

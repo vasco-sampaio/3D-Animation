@@ -14,15 +14,9 @@ void scene_structure::initialize()
 	camera_control.look_at({ 0.0f, 0.0f, 2.0f }, {0,0,0}, {0,1,0});
 	global_frame.initialize_data_on_gpu(mesh_primitive_frame());
 
-	field.resize(30, 30);
-	field_quad.initialize_data_on_gpu(mesh_primitive_quadrangle({ -1,-1,0 }, { 1,-1,0 }, { 1,1,0 }, { -1,1,0 }) );
-	field_quad.material.phong = { 1,0,0 };
-	field_quad.texture.initialize_texture_2d_on_gpu(field);
-
-	// grid = Octree<std::set<int>>(5);
-
 	initialize_sph();
 	sphere_particle.initialize_data_on_gpu(mesh_primitive_sphere(1.0,{0,0,0},10,10));
+    sphere_particle.material.color = { 0,0,1 };
 	sphere_particle.model.scaling = 0.01f;
 	curve_visual.color = { 1,0,0 };
 	curve_visual.initialize_data_on_gpu(curve_primitive_circle());
@@ -52,8 +46,6 @@ void scene_structure::initialize_sph()
 		}
 	}
 
-	update_grid(particles, grid);
-
     std::cout << "Number of particles: " << particles.size() << std::endl;
 }
 
@@ -69,13 +61,9 @@ void scene_structure::display_frame()
 	float const dt = 0.005f * timer.scale;
 
 	if (timer.t - t > 0.5f) {
-		update_grid(particles, grid);
+        simulate(dt, particles, sph_parameters, grid);
 		t = timer.t;
 	}
-
-	simulate(dt, particles, sph_parameters);
-	
-	
 
 	if (gui.display_particles) {
 		for (int k = 0; k < particles.size(); ++k) {
@@ -93,12 +81,6 @@ void scene_structure::display_frame()
 		}
 	}
 
-	if (gui.display_color) {
-		update_field_color(field, particles);
-		field_quad.texture.update(field);
-		draw(field_quad, environment);
-	}
-
 }
 
 void scene_structure::display_gui()
@@ -112,26 +94,6 @@ void scene_structure::display_gui()
 	ImGui::Checkbox("Color", &gui.display_color);
 	ImGui::Checkbox("Particles", &gui.display_particles);
 	ImGui::Checkbox("Radius", &gui.display_radius);
-}
-
-void update_field_color(grid_2D<vec3>& field, numarray<particle_element> const& particles)
-{
-	field.fill({ 1,1,1 });
-	float const d = 0.1f;
-	int const Nf = int(field.dimension.x);
-	for (int kx = 0; kx < Nf; ++kx) {
-		for (int ky = 0; ky < Nf; ++ky) {
-
-			float f = 0.0f;
-			vec3 const p0 = { 2.0f * (kx / (Nf - 1.0f) - 0.5f), 2.0f * (ky / (Nf - 1.0f) - 0.5f), 0.0f };
-			for (size_t k = 0; k < particles.size(); ++k) {
-				vec3 const& pi = particles[k].p;
-				float const r = norm(pi - p0) / d;
-				f += 0.25f * std::exp(-r * r);
-			}
-			field(kx, Nf - 1 - ky) = vec3(clamp(1 - f, 0, 1), clamp(1 - f, 0, 1), 1);
-		}
-	}
 }
 
 void scene_structure::mouse_move_event()

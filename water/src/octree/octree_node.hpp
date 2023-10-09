@@ -16,30 +16,14 @@ class OctreeNode {
 private:
     OctreeNode const* _parent = nullptr; // avoid using const_cast that removes const qualifier from an object
     mutable OctreeNode* _children[8] = { nullptr }; // property that can be modified even in a const object
-    unsigned int _code;
     mutable T _value;
 
-    const OctreeNode* searchValue(unsigned int mortonCode) const {
-        if (mortonCode == _code) {
-            return this;
-        }
-
-        int index = mortonCode & 0x7;
-
-        if (!_children[index]) {
-            _children[index] = new OctreeNode(mortonCode);
-            _children[index]->_parent = this;
-        }
-
-        return _children[index]->searchValue(mortonCode);
-    }
-
-    OctreeNode(unsigned int code) : _code(code), _value(T{}) {}
-    OctreeNode(unsigned int code, const T& value) : _code(code), _value(value) {}
+    OctreeNode() : _value(T{}) {}
+    explicit OctreeNode(const T& value) : _value(value) {}
 
     ~OctreeNode() {
-        for (int i = 0; i < 8; ++i) {
-            delete _children[i];
+        for (auto & i : _children) {
+            delete i;
         }
     }
 

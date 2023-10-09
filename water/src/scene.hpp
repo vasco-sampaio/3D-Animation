@@ -40,9 +40,6 @@ struct scene_structure : cgp::scene_inputs_generic {
 	cgp::numarray<particle_element> particles;      // Storage of the particles
 	cgp::mesh_drawable sphere_particle; // Sphere used to display a particle
 	cgp::curve_drawable curve_visual;   // Circle used to display the radius h of influence
-
-	cgp::grid_2D<cgp::vec3> field;      // grid used to represent the volume of the fluid under the particles
-	cgp::mesh_drawable field_quad; // quad used to display this field color
 	
 	Octree<std::set<int>> grid = Octree<std::set<int>>(5); // grid used to store the particles
 
