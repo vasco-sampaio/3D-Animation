@@ -4,9 +4,6 @@
 
 using namespace cgp;
 
-void update_field_color(grid_2D<vec3>& field, numarray<particle_element> const& particles);
-
-
 void scene_structure::initialize()
 {
 	camera_projection = camera_projection_orthographic{ -1.1f, 1.1f, -1.1f, 1.1f, -10, 10, window.aspect_ratio() };
@@ -24,27 +21,20 @@ void scene_structure::initialize()
 
 void scene_structure::initialize_sph()
 {
-    float const c = sph_parameters.c;
-	float const h = sph_parameters.h;
-
 	// Fill a square with particles
 	particles.clear();
 
-	for (int k = 0; k < 2; ++k) {
-		for (float x = h; x < 1.0f - h; x = x + c * h)
-		{
-			for (float y = -1.0f + h; y < 1.0f - h; y = y + c * h)
-			{
-				for (float z = -1.0f + h; z < 1.0f - h; z = z + c * h)
-				{
-					particle_element particle;
-					particle.p = {x + h / 8.0 * rand_interval(), y + h / 8.0 * rand_interval(),
-								z + h / 8.0 * rand_interval()};
-					particles.push_back(particle);
-				}
-			}
-		}
-	}
+    for (int k = 0; k < 10000; k++) {
+        float x = rand_interval(-1.0f, 1.0f);
+        float y = rand_interval(-1.0f, 1.0f);
+        float z = rand_interval(-1.0f, 1.0f);
+        particle_element particle;
+        particle.p = {x, y, z};
+
+        particle.morton = grid.data.mortonCode(particle.p);
+        grid.insert_into_node(particle.morton, k);
+        particles.push_back(particle);
+    }
 
     std::cout << "Number of particles: " << particles.size() << std::endl;
 }
@@ -61,9 +51,11 @@ void scene_structure::display_frame()
 	float const dt = 0.005f * timer.scale;
 
 	if (timer.t - t > 0.5f) {
-        simulate(dt, particles, sph_parameters, grid);
+        update_grid(particles, grid);
 		t = timer.t;
 	}
+
+    simulate(dt, particles, sph_parameters, grid);
 
 	if (gui.display_particles) {
 		for (int k = 0; k < particles.size(); ++k) {
