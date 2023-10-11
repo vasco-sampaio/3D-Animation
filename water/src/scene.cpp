@@ -31,8 +31,8 @@ void scene_structure::initialize_sph()
         particle_element particle;
         particle.p = {x, y, z};
 
-        particle.morton = grid.data.mortonCode(particle.p);
-        grid.insert_into_node(particle.morton, k);
+        particle.octant = grid.get_octant(particle.p);
+        grid.insert_into_node(particle.octant, k);
         particles.push_back(particle);
     }
 

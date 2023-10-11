@@ -46,7 +46,7 @@ void update_density_pressure_force(numarray<particle_element>& particles, sph_pa
         // Update density
         p_i.rho = 0;
 
-        for (int j : grid.get_node(p_i.morton)) {
+        for (int j : grid.get_node(p_i.octant)) {
             if (norm(p_i.p - particles[j].p) <= h)
                 p_i.rho += m * W_density(p_i.p, particles[j].p, h);
         }
@@ -62,7 +62,7 @@ void update_density_pressure_force(numarray<particle_element>& particles, sph_pa
         sum_press = vec3{0,0,0};
         sum_visc = vec3{0,0,0};
 
-        for (int j : grid.get_node(p_i.morton))
+        for (int j : grid.get_node(p_i.octant))
         {
             if (i != j && norm(p_i.p - particles[j].p) <= h) {
                 sum_press += m * ((p_i.pressure + particles[j].pressure) / (2.0f * particles[j].rho)) *

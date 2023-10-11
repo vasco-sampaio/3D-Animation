@@ -5,25 +5,23 @@
 
 struct particle_element;
 
-struct OctreeData {
-    const std::unordered_map<unsigned int, unsigned int> octantMortonMap;
-    const float octantSize;
-    const float octantNb;
+struct OctantFunctor {
+    float _octantSize;
+    unsigned int _octantNbPerDim;
+    cgp::vec3 _min;
 
-    const cgp::vec3 min;
-    const cgp::vec3 max;
+    OctantFunctor(unsigned int depth, cgp::vec3 min, cgp::vec3 max) : _min(min) {
+        this->_octantNbPerDim = 1 << depth;
+        this->_octantSize = (max.x - min.x) / _octantNbPerDim;
+    }
 
-    OctreeData(std::unordered_map<unsigned int, unsigned int> octantMortonMap, float octantSize, float octantNb, cgp::vec3 min, cgp::vec3 max) :
-        octantMortonMap(std::move(octantMortonMap)), octantSize(octantSize), octantNb(octantNb), min(min), max(max) {}
-
-    /* Given a position returns the matching morton code */
-    unsigned int mortonCode(const cgp::vec3& position) const {
-        unsigned int x = static_cast<unsigned int>((position.x - min.x) / octantSize);
-        unsigned int y = static_cast<unsigned int>((position.y - min.y) / octantSize);
-        unsigned int z = static_cast<unsigned int>((position.z - min.z) / octantSize);
+    unsigned int operator() (const cgp::vec3& position) const {
+        unsigned int x = static_cast<unsigned int>((position.x - _min.x) / _octantSize);
+        unsigned int y = static_cast<unsigned int>((position.y - _min.y) / _octantSize);
+        unsigned int z = static_cast<unsigned int>((position.z - _min.z) / _octantSize);
 
         // assuming the space is a cube
-        return octantMortonMap.at(x + y * octantNb + z * octantNb * octantNb);
+        return x + y * _octantNbPerDim + z * _octantNbPerDim * _octantNbPerDim;
     }
 };
 
@@ -41,76 +39,50 @@ concept ContainerConcept = requires(Container c) {
 template <typename T>
 class Octree {
 private:
-    // assuming we are dealing with a cube
-    static std::unordered_map<unsigned int, unsigned int> buildOctantMortonMap(float octantNb) {
-        std::unordered_map<unsigned int, unsigned int> octantMortonMap;
-
-        auto morton_code = [](unsigned int x, unsigned int y, unsigned int z) {
-            unsigned int offset = 0;
-
-            for (unsigned int i = 0; i < 10; ++i) {
-                offset |= ((x & (1 << i)) << 2 * i) | ((y & (1 << i)) << (2*i + 1)) | ((z & (1 << i)) << (2*i + 2));
-            }
-            return offset;
-        };
-
-        for (unsigned int x = 0; x < octantNb; ++x) {
-            for (unsigned int y = 0; y < octantNb; ++y) {
-                for (unsigned int z = 0; z < octantNb; ++z) {
-                    unsigned int key = x + y * octantNb + octantNb * octantNb * z;
-                    octantMortonMap[key] = morton_code(x, y, z);
-                }
-            }
-        }
-
-        return octantMortonMap;
-    }
+    OctantFunctor _functor;
 
     unsigned int _depth;
-    mutable std::unordered_map<unsigned int, T> _nodes;
+    mutable std::vector<T> _nodes;
 
     /* builds only the leaf nodes */
-    void buildTree(unsigned int mortonCode, unsigned int depth) {
+    void buildTree(unsigned int depth) {
         if (depth == 0) {
-            _nodes.emplace(mortonCode, T{});
+            _nodes.push_back(T{});
             return;
         }
 
-        for (int i = 0; i < 8; ++i) {
-            unsigned int childMortonCode = (mortonCode << 3) | i;
-            buildTree(childMortonCode, depth - 1);
+        for (int i = 0; i < 8; ++i)
+            buildTree( depth - 1);
+    }
+
+public:
+    explicit Octree(unsigned int depth, cgp::vec3 min = { -1.0f, -1.0f, -1.0f }, cgp::vec3 max = { 1.0f, 1.0f, 1.0f }) :
+            _functor(depth, min, max), _depth(depth), _nodes() {
+        if (_depth > 0) {
+            _nodes.reserve(std::pow(8, depth));
+            buildTree(depth);
         }
     }
 
+    unsigned int get_depth() const { return _depth; }
 
-public:
-    OctreeData data;
-
-
-    explicit Octree(unsigned int depth, float dimension = 1.0f) : _depth(depth), _nodes(), data(buildOctantMortonMap(dimension/ static_cast<float>(1 << depth)),
-                                                                                                   dimension / static_cast<float>(1 << depth),
-                                                                                             dimension / static_cast<float>(1 << depth)) {
-        if (_depth > 0)
-            buildTree(0, depth);
+    unsigned int get_octant(const cgp::vec3& position) const {
+        return _functor(position);
     }
 
-
-    [[nodiscard]] unsigned int get_depth() const { return _depth; }
-
-
-    const T& get_node(unsigned int mortonCode) const {
-        return _nodes.at(mortonCode);
+    const T& get_node(unsigned int octant) const {
+        return _nodes[octant];
     }
 
     // Enable these methods only if the Container satisfies the ContainerConcept
     template <typename Container = T>
-    std::enable_if_t<ContainerConcept<Container>, void> insert_into_node(unsigned int mortonCode, const typename Container::value_type& value) const {
-        (void)_nodes.at(mortonCode).insert(value);
+    std::enable_if_t<ContainerConcept<Container>, void> insert_into_node(unsigned int octant, const typename Container::value_type& value) const {
+        (void)_nodes[octant].insert(value);
     }
 
     template <typename Container = T>
-    std::enable_if_t<ContainerConcept<Container>, void> erase_from_node(unsigned int mortonCode, const typename Container::value_type& value) const {
-        (void)_nodes.at(mortonCode).erase(value);
+    std::enable_if_t<ContainerConcept<Container>, void> erase_from_node(unsigned int octant, const typename Container::value_type& value) const {
+        (void)_nodes[octant].erase(value);
     }
 };
 

@@ -13,9 +13,9 @@ struct particle_element
     float rho;      // density at this particle position
     float pressure; // pressure at this particle position
 
-    unsigned int morton; // Morton code of this particle
+    unsigned int octant; // Morton code of this particle
 
-    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), morton(0) {}
+    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), octant(0) {}
 };
 
 // SPH simulation parameters
