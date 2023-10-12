@@ -37,11 +37,12 @@ struct scene_structure : cgp::scene_inputs_generic {
 	cgp::timer_basic timer;
 
 	sph_parameters_structure sph_parameters; // Physical parameter related to SPH
-	cgp::numarray<particle_element> particles;      // Storage of the particles
 	cgp::mesh_drawable sphere_particle; // Sphere used to display a particle
 	cgp::curve_drawable curve_visual;   // Circle used to display the radius h of influence
-	
-	Octree<std::set<int>> grid = Octree<std::set<int>>(5); // grid used to store the particles
+
+    unsigned int number_of_particles = 10000;
+	Octree<std::set<int>> grid = Octree<std::set<int>>(std::floor(std::log2(static_cast<double>(number_of_particles)) / 3.0)); // grid used to store the particles
+    ParticleArray particles = ParticleArray(number_of_particles); // Array of particles
 
 	// ****************************** //
 	// Functions

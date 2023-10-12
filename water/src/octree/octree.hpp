@@ -1,9 +1,11 @@
 #pragma once
 
+#include <list>
+
 #include "cgp/cgp.hpp"
 // #include "octree_node.hpp"
 
-struct particle_element;
+struct ParticleArray;
 
 struct OctantFunctor {
     float _octantSize;
@@ -31,18 +33,14 @@ concept ContainerConcept = requires(Container c) {
     typename Container::iterator;
 };
 
-/*
-** The Morton code length is related to the number of levels in your octree.
-** Specifically, the Morton code length should be three times the number of levels in
-** your octree since each level corresponds to 3 bits in the Morton code (due to 8 children per node).
-*/
 template <typename T>
 class Octree {
 private:
     OctantFunctor _functor;
 
     unsigned int _depth;
-    mutable std::vector<T> _nodes;
+    mutable std::vector<T> _nodes; // leaves
+    // std::vector<std::list<int>> _neighbors;
 
     /* builds only the leaf nodes */
     void buildTree(unsigned int depth) {
@@ -86,4 +84,4 @@ public:
     }
 };
 
-void update_grid(cgp::numarray<particle_element>& particles, const Octree<std::set<int>>& octree);
+void update_grid(ParticleArray& particles, const Octree<std::set<int>>& octree);

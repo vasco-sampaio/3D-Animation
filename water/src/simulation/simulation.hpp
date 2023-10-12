@@ -4,18 +4,36 @@
 #include "cgp/cgp.hpp"
 
 // SPH Particle
-struct particle_element
-{
-    cgp::vec3 p; // Position
-    cgp::vec3 v; // Speed
-    cgp::vec3 f; // Force
+struct ParticleArray {
+    std::vector<cgp::vec3> positions;
+    std::vector<cgp::vec3> speeds;
+    std::vector<cgp::vec3> forces;
+    std::vector<float> rho;
+    std::vector<float> pressure;
+    std::vector<unsigned int> octants;
 
-    float rho;      // density at this particle position
-    float pressure; // pressure at this particle position
+    ParticleArray(size_t numParticles) :
+            positions(numParticles),
+            speeds(numParticles),
+            forces(numParticles),
+            rho(numParticles),
+            pressure(numParticles),
+            octants(numParticles) {
+        // You can add additional initialization here if needed.
+    }
 
-    unsigned int octant; // Morton code of this particle
+    [[nodiscard]] unsigned int size() const {
+        return positions.size();
+    }
 
-    particle_element() : p{0,0,0},v{0,0,0},f{0,0,0},rho(0),pressure(0), octant(0) {}
+    void push_back(cgp::vec3 const& position, cgp::vec3 const& speed, cgp::vec3 const& force, float rho, float pressure, unsigned int octant) {
+        positions.push_back(position);
+        speeds.push_back(speed);
+        forces.push_back(force);
+        this->rho.push_back(rho);
+        this->pressure.push_back(pressure);
+        octants.push_back(octant);
+    }
 };
 
 // SPH simulation parameters
@@ -42,5 +60,5 @@ struct sph_parameters_structure
 };
 
 
-void simulate(float dt, cgp::numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters,
+void simulate(float dt, ParticleArray& particles, sph_parameters_structure const& sph_parameters,
               const Octree<std::set<int>>& grid);

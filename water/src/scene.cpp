@@ -21,19 +21,16 @@ void scene_structure::initialize()
 
 void scene_structure::initialize_sph()
 {
-	// Fill a square with particles
-	particles.clear();
-
-    for (int k = 0; k < 10000; k++) {
+    for (int k = 0; k < number_of_particles; k++) {
         float x = rand_interval(-1.0f, 1.0f);
         float y = rand_interval(-1.0f, 1.0f);
         float z = rand_interval(-1.0f, 1.0f);
-        particle_element particle;
-        particle.p = {x, y, z};
 
-        particle.octant = grid.get_octant(particle.p);
-        grid.insert_into_node(particle.octant, k);
-        particles.push_back(particle);
+        cgp::vec3 p = {x, y, z};
+        unsigned int octant = grid.get_octant(p);
+
+        particles.push_back(p, {0, 0, 0}, {0, 0, 0}, 0, 0, octant);
+        grid.insert_into_node(octant, k);
     }
 
     std::cout << "Number of particles: " << particles.size() << std::endl;
@@ -59,8 +56,7 @@ void scene_structure::display_frame()
 
 	if (gui.display_particles) {
 		for (int k = 0; k < particles.size(); ++k) {
-			vec3 const& p = particles[k].p;
-			sphere_particle.model.translation = p;
+			sphere_particle.model.translation = particles.positions[k];
 			draw(sphere_particle, environment);
 		}
 	}
@@ -68,7 +64,7 @@ void scene_structure::display_frame()
 	if (gui.display_radius) {
 		curve_visual.model.scaling = sph_parameters.h;
 		for (int k = 0; k < particles.size(); k += 10) {
-			curve_visual.model.translation = particles[k].p;
+			curve_visual.model.translation = particles.positions[k];
 			draw(curve_visual, environment);
 		}
 	}

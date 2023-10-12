@@ -31,7 +31,7 @@ float W_density(vec3 const& p_i, const vec3& p_j, float h)
 	return 315.0/(64.0*3.14159f*std::pow(h,9)) * std::pow(h*h-r*r, 3.0f);
 }
 
-void update_density_pressure_force(numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters, const Octree<std::set<int>>& grid)
+void update_density_pressure_force(ParticleArray& particles, sph_parameters_structure const& sph_parameters, const Octree<std::set<int>>& grid)
 {
     float const h = sph_parameters.h;
     float const m = sph_parameters.m;
@@ -41,18 +41,18 @@ void update_density_pressure_force(numarray<particle_element>& particles, sph_pa
 
     for (int i = 0; i < particles.size(); ++i)
     {
-        particle_element& p_i = particles[i];
-
         // Update density
-        p_i.rho = 0;
+        float rho = 0;
 
-        for (int j : grid.get_node(p_i.octant)) {
-            if (norm(p_i.p - particles[j].p) <= h)
-                p_i.rho += m * W_density(p_i.p, particles[j].p, h);
+        for (int j : grid.get_node(particles.octants[i])) {
+            if (norm(particles.positions[i] - particles.positions[j]) <= h)
+                rho += m * W_density(particles.positions[i], particles.positions[j], h);
         }
 
+        particles.rho[i] = rho;
+
         // Compute pressure
-        p_i.pressure = density_to_pressure(p_i.rho, rho0, stiffness);
+        particles.pressure[i] = density_to_pressure(rho, rho0, stiffness);
 
         // Compute forces
         vec3 F_pressure;
@@ -62,24 +62,24 @@ void update_density_pressure_force(numarray<particle_element>& particles, sph_pa
         sum_press = vec3{0,0,0};
         sum_visc = vec3{0,0,0};
 
-        for (int j : grid.get_node(p_i.octant))
+        for (int j : grid.get_node(particles.octants[i]))
         {
-            if (i != j && norm(p_i.p - particles[j].p) <= h) {
-                sum_press += m * ((p_i.pressure + particles[j].pressure) / (2.0f * particles[j].rho)) *
-                             W_gradient_pressure(p_i.p, particles[j].p, h);
+            if (i != j && norm(particles.positions[i] - particles.positions[j]) <= h) {
+                sum_press += m * ((particles.pressure[i] + particles.pressure[j]) / (2.0f * particles.rho[j])) *
+                             W_gradient_pressure(particles.positions[i], particles.positions[j], h);
 
-                sum_visc += m * ((particles[j].v - p_i.v) / particles[j].rho) *
-                            W_laplacian_viscosity(p_i.p, particles[j].p, h);
+                sum_visc += m * ((particles.speeds[j] - particles.speeds[i]) / particles.rho[j]) *
+                            W_laplacian_viscosity(particles.positions[i], particles.positions[j], h);
             }
         }
 
-        F_pressure = float(-m / p_i.rho) * sum_press;
+        F_pressure = float(-m / particles.rho[i]) * sum_press;
         F_viscosity = m * nu * sum_visc;
-        p_i.f = m * vec3{0,-9.81f,0} + F_pressure + F_viscosity;
+        particles.forces[i] = m * vec3{0,-9.81f,0} + F_pressure + F_viscosity;
     }
 }
 
-void simulate(float dt, numarray<particle_element>& particles, sph_parameters_structure const& sph_parameters, const Octree<std::set<int>>& grid)
+void simulate(float dt, ParticleArray& particles, sph_parameters_structure const& sph_parameters, const Octree<std::set<int>>& grid)
 {
 	// Update values
     update_density_pressure_force(particles, sph_parameters, grid);
@@ -91,11 +91,11 @@ void simulate(float dt, numarray<particle_element>& particles, sph_parameters_st
     // Collision
     float const epsilon = 1e-3f;
 
-	for (particle_element& p_i : particles)
-	{
-        vec3& v = p_i.v;
-		vec3& p = p_i.p;
-		vec3& f = p_i.f;
+    for (int i = 0; i < particles.size(); ++i)
+    {
+        vec3& v = particles.speeds[i];
+		vec3& p = particles.positions[i];
+		vec3& f = particles.forces[i];
 
 		v = (1-damping)*v + dt*f/m;
 		p = p + dt*v;

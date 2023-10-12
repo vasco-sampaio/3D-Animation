@@ -3,16 +3,15 @@
 
 using namespace cgp;
 
-void update_grid(numarray<particle_element>& particles, const Octree<std::set<int>>& grid)
+void update_grid(ParticleArray& particles, const Octree<std::set<int>>& grid)
 {
     for (int id = 0; id < particles.size(); ++id)
     {
-        particle_element& prt = particles[id];
-        unsigned int octant = grid.get_octant(prt.p);
+        unsigned int octant = grid.get_octant(particles.positions[id]);
 
-        if (octant != prt.octant) {
-            grid.erase_from_node(prt.octant, id);
-            prt.octant = octant;
+        if (octant != particles.octants[id]) {
+            grid.erase_from_node(particles.octants[id], id);
+            particles.octants[id] = octant;
             grid.insert_into_node(octant, id);
         }
     }
